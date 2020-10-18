@@ -1,4 +1,19 @@
 # BPina_hw5
+For this assignment I created a mini day planner. It has every hour from 9am to 5pm. To-dos for that hour can be entered and saved. Saving it will keep it there for if the page is reloaded or closed. The hours can be reset so they empty, and will stay empty until something else is saved.
+
+Day Planer - https://bcpbyu.github.io/BPina_hw5/
+
+## Pictures
+
+This is something what the page will look like when first opened.
+
+![Capture 1](./Assets/firstOpen.png)
+
+This is something what the page will look like when things are saved.
+
+![Capture 2](./Assets/scheduleEx.png)
+
+# Below is the given assignment instructions
 
 # 05 Third-Party APIs: Work Day Scheduler
 
