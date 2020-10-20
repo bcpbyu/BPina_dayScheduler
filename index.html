@@ -22,25 +22,14 @@
     <header class="jumbotron">
         <h1 class="display-3">Work Day Scheduler</h1>
         <p class="lead">A simple calendar app for scheduling your work day</p>
+
+        <!-- Current date and time displayer -->
         <p id="currentDay" class="lead"></p>
+
+        <!-- Reset button -->
+        <button class="btn btn-dark" id="reset">Reset</button>
+
     </header>
-
-    <!-- Date and time display div -->
-    <div class="container text-center pb-2">
-        <div class="row">
-
-            <!-- Date and time div -->
-            <div class="col-md-11">
-                <h1><span id="date"></span><span> | </span><span id="time"></span></h1>
-            </div>
-
-            <!-- Reset button div -->
-            <div class="col-md-1 px-0">
-                <button class="btn btn-dark" id="reset">Reset</button>
-            </div>
-
-        </div>
-    </div>
 
     <!-- 9am div -->
     <div class="container pt-4">
@@ -118,7 +107,7 @@
 
             <!-- 1pm save button -->
             <button class="col-md-1 btn btn-primary" id="4">Save</button>
-            
+
         </div>
     </div>
 

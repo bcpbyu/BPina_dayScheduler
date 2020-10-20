@@ -1,15 +1,9 @@
-// Variable for teh saved data, and display curent time
+// Variable for the saved data, and display curent time
 var schedule = [];
 var time = [];
-var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-var d = new Date();
-var date = [];
-date[0] = d.getMonth();
-date[1] = d.getDate();
-date[2] = d.getFullYear();
-date[3] = d.getHours();
-date[4] = d.getMinutes();
-var after;
+var date = moment().format('MMMM Do YYYY, h:mm a');
+var hour = moment().format("h");
+var after = moment().format("a");
 
 // Filling time and schedule variable so there's no empty variable error
 for (var i = 0; i < 9; i++) {
@@ -37,42 +31,30 @@ $("#reset").on("click", function () {
     location.reload();
 });
 
-// This function makes the date and time from javascript make sense then displays it
+// This function displays the date and time
 function timeDis() {
-    if (date[3] > 11) {
-        after = "pm";
-    }
-    else {
-        after = "am";
-    }
-    if (date[3] > 12) {
-        date[3] = date[3] - 12;
-    }
-    if (date[4] < 10) {
-        date[4] = "0" + date[4];
-    }
-
-    $("#date").text(months[date[0]] + " " + date[1] + ", " + date[2]);
-    
-    $("#time").text(date[3] + " : " + date[4] + " " + after);
+    $("#currentDay").text(date);
 }
 
-// This function constantly update the current time
+// This function constantly updates the current time
 function timeChange() {
     setInterval(function () {
-        d = new Date();
-        date[3] = d.getHours();
-        date[4] = d.getMinutes();
+        date = moment().format('MMMM Do YYYY, h:mm a');
+        after = moment().format("a");
 
         colors();
         timeDis();
-    }, 1000)
+    }, 1000);
 }
 
 // This function change the color of the textareas depending on the time
 function colors() {
-    var timeAdj = date[3] - 9;
-    
+    var timeAdj = hour - 9;
+
+    if (after == "pm") {
+        timeAdj = timeAdj + 12;
+    }
+
     for (var i = 0; i < 9; i++) {
         if (time[i] < timeAdj) {
 
@@ -95,8 +77,7 @@ function colors() {
     }
 }
 
-// This function calls the colors, timeDis, and timeChange functions. Also update textareas 
-// with the saved to-dos
+// This function calls the colors, timeDis, and timeChange functions. Also update textareas with the saved to-dos
 function load() {
     colors();
     timeDis();
