@@ -50,29 +50,28 @@ function timeChange() {
 // This function change the color of the textareas depending on the time
 function colors() {
     var timeAdj = hour - 9;
-
-    if (after == "pm") {
+    if (after == "pm" && hour < 12) {
         timeAdj = timeAdj + 12;
     }
-
+    
     for (var i = 0; i < 9; i++) {
-        if (time[i] < timeAdj) {
+        if (i < timeAdj) {
 
             // Past color change
-            $("#" + time[i]).siblings("textarea").css("background-color", "#d6d6d6");
-
+            $("#" + i).siblings("textarea").css("background-color", "#d6d6d6");
+            
         }
-        else if (time[i] > timeAdj) {
+        else if (i > timeAdj) {
 
             // Future color change
-            $("#" + time[i]).siblings("textarea").css("background-color", "#ffd5d4");
+            $("#" + i).siblings("textarea").css("background-color", "#ffd5d4");
 
         }
         else {
 
             // Present color change
-            $("#" + time[i]).siblings("textarea").css("background-color", "#d4ffd7");
-
+            $("#" + i).siblings("textarea").css("background-color", "#d4ffd7");
+            
         }
     }
 }
@@ -94,6 +93,6 @@ function load() {
             schedule[i] = "";
         }
         schedule = input;
-        $("#" + time[i]).siblings("textarea").val(schedule[i]);
+        $("#" + i).siblings("textarea").val(schedule[i]);
     }
 }
